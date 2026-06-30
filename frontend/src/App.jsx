@@ -82,5 +82,55 @@ function App() {
     }
   };
 
-  
+  const getStatusBadge = (status) => {
+    switch (status) {
+      case 'new':
+        return (
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+            <AlertCircle size={12} /> Новая
+          </span>
+        );
+        case 'in+progress':
+          return (
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+              <Clock size={12} /> В процессе
+            </span>
+          );
+          case 'done':
+            return (
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                <CheckCircle size={12} /> Выполнено
+              </span>
+            );
+            default:
+              return null;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
+        <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="bg-indigo-600 text-white p-2 rounded-lg">
+              <CheckCircle size={24} />
+            </div>
+            <h1 className="text-xl font-bold tracking-tight text-slate-900">Task Manager</h1>
+          </div>
+          <button 
+            onClick={fetchTasks}
+            className="p-2 text-slate-500 hover:text-indigo-600 hover:bg-slate-100 rounded-lg transition-colors"
+            title="Обновить список"
+          >
+            <RefreshCw size={20} className={loading ? 'animate-spin' : ''} />
+          </button>
+        </div>
+      </header>
+
+      <main className="max-w-5xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        
+      </main>
+    </div>
+  )
 }
